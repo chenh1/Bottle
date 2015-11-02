@@ -1,6 +1,8 @@
 $fontMain: Verdana, sans-serif;
 $fontInput: Helvetica, sans-serif;
+$fontOpenSans: 'Open Sans', sans-serif;
 $colorScheme: #ca4940;
+$textColor: #919191;
 
 .mainContent{
   font-family: $fontMain;
@@ -10,6 +12,12 @@ $colorScheme: #ca4940;
 }
 
 .commentForm{
+  .formHeader{
+    font-family: $fontOpenSans;
+    color: $textColor;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
   .liveView{
     color: $colorScheme;
     height: 100px;

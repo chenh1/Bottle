@@ -6,6 +6,7 @@
   <meta charset="utf-8" />
   <title class="yay"></title>
 
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="/stylesheets/style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -28,7 +29,7 @@
   </div>
 
   <form class = "commentForm col-xs-12 col-sm-6" name = "commentForm" ng-controller = "CommentController as commentCtrl" ng-submit = "commentForm.$valid && commentCtrl.addComment()" novalidate>
-    <h3>Put your message here:</h3>
+    <h3 class = "formHeader">Put your message here:</h3>
 
     <blockquote class = "liveView">
       <div class = "liveName">{{commentCtrl.comment.name}}</div>
