@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8" />
+  <title class="yay"></title>
+
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+  <script src="/javascripts/main.js"></script>
+
+
+</head>
+
+<body ng-app = "bottle">
+
+<div class = "mainContent row" ng-controller = "MainContent as main">
+
+  <div class = "listContainer col-xs-12 col-sm-6">
+    <div class = "commentList" ng-repeat = "comment in main.comments">
+      {{comment.name + ": " + comment.comment}}
+      <input class = "inputBtn" type = "submit" value = "Delete">
+    </div>
+  </div>
+
+  <form class = "commentForm col-xs-12 col-sm-6" name = "commentForm" ng-controller = "CommentController as commentCtrl" ng-submit = "commentForm.$valid && commentCtrl.addComment()" novalidate>
+    <h3>Put your message here:</h3>
+
+    <blockquote class = "liveView">
+      <div class = "liveName">{{commentCtrl.comment.name}}</div>
+      <div class = "liveComment">{{commentCtrl.comment.comment}}</div>
+    </blockquote>
+
+
+    <input class = "userInput" ng-model = "commentCtrl.comment.name" ng-maxlength = 18 required>
+    <input class = "userInput" ng-model = "commentCtrl.comment.comment" ng-maxlength = 60 required>
+    <input class = "inputBtn" type = "submit" value = "Submit Comment">
+  </form>
+</div>
+
+
+</body>
+
+</html>

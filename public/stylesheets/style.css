@@ -1,0 +1,21 @@
+.mainContent {
+  font-family: Verdana, sans-serif; }
+  .mainContent .commentList {
+    font-size: 16px; }
+
+.commentForm .liveView {
+  color: #ca4940;
+  height: 100px; }
+  .commentForm .liveView .liveName {
+    font-size: 20px; }
+  .commentForm .liveView .liveComment {
+    font-size: 18px; }
+.commentForm .userInput {
+  font-family: Helvetica, sans-serif; }
+.commentForm .inputBtn {
+  font-family: arial, sans-serif; }
+
+body {
+  padding: 50px; }
+
+/*# sourceMappingURL=style.css.map */
