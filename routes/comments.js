@@ -10,12 +10,12 @@ var url = 'mongodb://localhost:27017/bottle';
 var bottleDB = null;
 var messages = [];
 
-MongoClient.connect(url, function (err, db) {
+MongoClient.connect(url, function (err, db) {   /** Migrate to models folder after testing is completed */
     assert.equal(null, err);
     bottleDB = db;
 });
 
-var searchDocument = function(){
+var searchDocument = function(){                /** Migrate to models folder after testing is completed */
     bottleDB.collection('comments', function(err, collection){
         collection.find().toArray(function(err, results){
             messages = results;
@@ -23,7 +23,7 @@ var searchDocument = function(){
     });
 };
 
-var insertDocument = function(name, comment) {
+var insertDocument = function(name, comment) {  /** Migrate to models folder after testing is completed */
     bottleDB.collection('comments').insertOne( {
         name : name,
         comment: comment
@@ -40,7 +40,6 @@ router.route('/')
     .post(parseUrlEncoded, function (req, res) {
 
         var newComment = req.body;
-        //res.status(201).json(newComment.name);
         insertDocument(newComment.name, newComment.comment);
         res.json(messages);
 
