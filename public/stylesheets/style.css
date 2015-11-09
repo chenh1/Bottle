@@ -3,22 +3,24 @@
   .mainContent .commentList {
     font-size: 16px; }
 
-.commentForm .formHeader {
-  font-family: "Open Sans", sans-serif;
-  color: #919191;
-  font-weight: 300;
-  text-transform: uppercase; }
-.commentForm .liveView {
-  color: #ca4940;
-  height: 100px; }
-  .commentForm .liveView .liveName {
-    font-size: 20px; }
-  .commentForm .liveView .liveComment {
-    font-size: 18px; }
-.commentForm .userInput {
-  font-family: Helvetica, sans-serif; }
-.commentForm .inputBtn {
-  font-family: arial, sans-serif; }
+.commentForm {
+  color: green; }
+  .commentForm .formHeader {
+    font-family: "Open Sans", sans-serif;
+    color: #919191;
+    font-weight: 300;
+    text-transform: uppercase; }
+  .commentForm .liveView {
+    color: #ca4940;
+    height: 100px; }
+    .commentForm .liveView .liveName {
+      font-size: 20px; }
+    .commentForm .liveView .liveComment {
+      font-size: 18px; }
+  .commentForm .userInput {
+    font-family: Helvetica, sans-serif; }
+  .commentForm .inputBtn {
+    font-family: arial, sans-serif; }
 
 body {
   padding: 50px; }

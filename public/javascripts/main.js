@@ -1,20 +1,24 @@
 (function(){
     var app = angular.module("bottle", [], function($httpProvider) {
-        // Use x-www-form-urlencoded Content-Type
+
+        // Use x-www-form-urlencoded Content-Type; Angular transmits data using application/json
         $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
 
         /**
-         * Fix for serialization: converts an object to x-www-form-urlencoded serialization.
+         * Angular fix for serialization: converts an object to x-www-form-urlencoded serialization.
          * @param {Object} obj
          * @return {String}
          */
         var param = function (obj) {
             var query = '', name, value, fullSubName, subName, subValue, innerObj, i;
 
-            for (name in obj) {
+            for (name in obj) {     /** Iterate through each property of the object */
                 value = obj[name];
 
-                if (value instanceof Array) {
+                console.log("obj: ", obj);
+                console.log("value: ", value);
+
+                if (value instanceof Array) {           /** Does value's prototype equate to Array's prototype? */
                     for (i = 0; i < value.length; ++i) {
                         subValue = value[i];
                         fullSubName = name + '[' + i + ']';
@@ -23,7 +27,7 @@
                         query += param(innerObj) + '&';
                     }
                 }
-                else if (value instanceof Object) {
+                else if (value instanceof Object) {     /** Does value's prototype equate to Object's prototype? */
                     for (subName in value) {
                         subValue = value[subName];
                         fullSubName = name + '[' + subName + ']';
@@ -32,11 +36,13 @@
                         query += param(innerObj) + '&';
                     }
                 }
-                else if (value !== undefined && value !== null)
+                else if (value !== undefined && value !== null) {   /** This will execute in our application since inputs are strings */
                     query += encodeURIComponent(name) + '=' + encodeURIComponent(value) + '&';
+                    console.log("query: ", query);
+                }
             }
 
-            return query.length ? query.substr(0, query.length - 1) : query;
+            return query.length ? query.substr(0, query.length - 1) : query;    /** Returns concatenated string */
         };
 
         // Override $http service's default transformRequest
