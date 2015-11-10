@@ -6,6 +6,7 @@ var parseUrlEncoded = bodyParser.urlencoded({extended: false});
 var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 var url = 'mongodb://localhost:27017/bottle';
+var ObjectID = require('mongodb').ObjectID;
 
 var bottleDB = null;
 var messages = [];
@@ -30,6 +31,10 @@ var insertDocument = function(name, comment) {  /** Migrate to models folder aft
     });
 };
 
+var deleteDocument = function(id){
+    bottleDB.collection('comments').remove({"_id":ObjectID(id)});
+};
+
 router.route('/')
     .get(function(req, res) {
 
@@ -38,11 +43,14 @@ router.route('/')
 
     })
     .post(parseUrlEncoded, function (req, res) {
-
-        var newComment = req.body;
-        insertDocument(newComment.name, newComment.comment);
-        res.json(messages);
-
+        var commentData = req.body;
+        if(commentData.loadType == 'addComment'){
+            insertDocument(commentData.name, commentData.comment);
+            res.json(messages);
+        } else if (commentData.loadType == 'deleteComment'){
+            console.log("Deleted");
+            deleteDocument(commentData.commentid);
+        }
     });
 
 module.exports = router;
