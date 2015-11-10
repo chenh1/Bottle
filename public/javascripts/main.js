@@ -71,7 +71,7 @@
             $http({
                 method: 'POST',
                 url: '/comments',
-                data: {'name':this.comment.name, 'comment':this.comment.comment}
+                data: {'name':this.comment.name, 'comment':this.comment.comment, 'loadType':'addComment'}
             }).then(function(res){
                 content.comments = res;
             });
@@ -80,3 +80,25 @@
     }]);
 
 })();
+
+$(document).ready(function(){
+
+    $(".listContainer").on("click", ".delBtn", function(){
+        var commentid = $(this).attr("commentid");
+        console.log(commentid);
+        $.ajax({
+            method: 'POST',
+            url: '/comments',
+            data: {'commentid':commentid, 'loadType':'deleteComment'},
+            dataType: 'json',
+            success: function(){
+                console.log(this.data);
+                console.log("I did it!");
+            },
+            error: function(){
+                console.log("Failed");
+            }
+        })
+    });
+
+});

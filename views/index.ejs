@@ -24,7 +24,7 @@
   <div class = "listContainer col-xs-12 col-sm-6">
     <div class = "commentList" ng-repeat = "comment in main.comments">
       {{comment.name + ": " + comment.comment}}
-      <input class = "inputBtn" type = "submit" value = "Delete">
+      <input class = "inputBtn delBtn" type = "submit" value = "Delete" commentid = "{{comment._id}}">
     </div>
   </div>
 
