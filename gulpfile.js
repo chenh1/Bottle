@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var jshint = require('gulp-jshint');
+var mocha = require('gulp-mocha');
 var sourcemaps = require('gulp-sourcemaps');
 var concat = require('gulp-concat');
 
@@ -14,9 +15,23 @@ gulp.task('jshint', function(){
         .pipe(jshint.reporter('jshint-stylish'));   /** Make our jshint color-coded */
 });
 
-/** Start the watch task and execute any tasks on changes in our js files */
+///** Start the watch task and execute any tasks on changes in our js files */
+//gulp.task('watch', function(){
+//    gulp.watch('public/javascripts/**/*.js', ['jshint']);
+//    return gutil.log("Gulp execution!");
+//});
+
+gulp.task('mocha', function(){
+    return gulp.src(['public/javascripts/**/*.js'], {read:false})
+        .pipe(mocha({reporter: 'list'}))
+        .on('error', gutil.log);
+});
+
+
+/** Watching any changes in 'public/javascripts/**//*.js' and executing both 'mocha' and 'jshint'
+in the event of a change. Also returns the gutil.log */
 gulp.task('watch', function(){
-    gulp.watch('public/javascripts/**/*.js', ['jshint']);
+    gulp.watch(['public/javascripts/**/*.js'], ['mocha', 'jshint']);
     return gutil.log("Gulp execution!");
 });
 

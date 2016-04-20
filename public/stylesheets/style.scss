@@ -3,16 +3,25 @@ $fontInput: Helvetica, sans-serif;
 $fontOpenSans: 'Open Sans', sans-serif;
 $colorScheme: #ca4940;
 $textColor: #919191;
+$inputUnderline: 1px solid white;
 
 .mainContent{
   font-family: $fontMain;
-  .commentList{
-    font-size: 16px;
+  .listContainer {
+    max-height: 85vh;
+    overflow-y: scroll;
+    .commentList {
+      font-size: 16px;
+      border-bottom: 1px solid black;
+      padding: 25px;
+    }
   }
 }
 
 .commentForm{
+  background-color: #cceeff;
   color:green;
+  box-shadow: 10px 10px 10px #5b696e;
   .formHeader{
     font-family: $fontOpenSans;
     color: $textColor;
@@ -22,6 +31,7 @@ $textColor: #919191;
   .liveView{
     color: $colorScheme;
     height: 100px;
+    border-left:none;
     .liveName{
       font-size: 20px;
     }
@@ -32,9 +42,22 @@ $textColor: #919191;
   }
   .userInput{
     font-family: $fontInput;
+    background: none;
+    border: none;
+    border-bottom: $inputUnderline;
+    box-shadow: none;
+    border-radius: 0;
+  }
+  .userInput:focus{
+    box-shadow: none;
+    border-bottom: $inputUnderline;
   }
   .inputBtn{
     font-family: arial, sans-serif;
+  }
+  .userInput,
+  .submitBtn{
+    margin: 5px;
   }
 }
 

@@ -22,9 +22,12 @@
 <div class = "mainContent row" ng-controller = "MainContent as main">
 
   <div class = "listContainer col-xs-12 col-sm-6">
-    <div class = "commentList" ng-repeat = "comment in main.comments">
-      {{comment.name + ": " + comment.comment}}
-      <input class = "inputBtn delBtn" type = "submit" value = "Delete" commentid = "{{comment._id}}">
+    <div class = "commentList col-xs-12" ng-repeat = "comment in main.comments">
+      <div class = "commentName col-xs-12 col-sm-4">{{comment.name}}</div>
+      <div class = "commentContent col-xs-12 col-sm-6">{{comment.comment}}</div>
+      <div class = "delContainer col-xs-12 col-sm-2">
+        <input class = "btn inputBtn delBtn" type = "submit" value = "Delete" commentid = "{{comment._id}}">
+      </div>
     </div>
   </div>
 
@@ -37,9 +40,9 @@
     </blockquote>
 
 
-    <input placeholder = "Name" class = "userInput" ng-model = "commentCtrl.comment.name" ng-maxlength = 18 required>
-    <input placeholder = "Message" class = "userInput" ng-model = "commentCtrl.comment.comment" ng-maxlength = 60 required>
-    <input class = "inputBtn" type = "submit" value = "Submit Comment">
+    <input placeholder = "Name" class = "userInput form-control" ng-model = "commentCtrl.comment.name" ng-maxlength = 18 required>
+    <input placeholder = "Message" class = "userInput form-control" ng-model = "commentCtrl.comment.comment" ng-maxlength = 60 required>
+    <input class = "btn inputBtn submitBtn" type = "submit" value = "Submit Comment">
   </form>
 </div>
 

@@ -85,6 +85,7 @@ $(document).ready(function(){
 
     $(".listContainer").on("click", ".delBtn", function(){
         var commentid = $(this).attr("commentid");
+        var yay = "123";
         console.log(commentid);
         $.ajax({
             method: 'POST',
